@@ -12,5 +12,9 @@ namespace BlazorDB.Client.Services.EmployeeService
         Task CreateEmployee(Employee employee);
         Task UpdateEmployee(Employee employee);
         Task DeleteEmployee(int id);
+
+
+
+        //Task CreateRecord(Record record);
     }
 }

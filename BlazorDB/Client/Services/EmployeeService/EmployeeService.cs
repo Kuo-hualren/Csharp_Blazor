@@ -65,11 +65,32 @@ namespace BlazorDB.Client.Services.EmployeeService
         }
 
 
-    private async Task SetEmployees(HttpResponseMessage result)
+        private async Task SetEmployees(HttpResponseMessage result)
         {
             var response = await result.Content.ReadFromJsonAsync<List<Employee>>();
             Employees = response;
             _navigationManager.NavigateTo("employees");
         }
+
+
+
+
+
+
+
+        //-------------------------------------------------------------------------------
+        //public async Task CreateRecord(Record record)
+        //{
+        //    var result = await _http.PostAsJsonAsync("api/employ/records", record);
+        //    await SetRecords(result);
+        //}
+        //private async Task SetRecords(HttpResponseMessage result)
+        //{
+        //    var response = await result.Content.ReadFromJsonAsync<List<Record>>();
+        //    Records = response;
+        //    _navigationManager.NavigateTo("record");
+        //}
     }
+
+    
 }

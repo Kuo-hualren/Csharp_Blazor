@@ -105,5 +105,19 @@ namespace BlazorDB.Server.Controllers
         {
             return await _context.Employees.Include(sh => sh.Record).ToListAsync();
         }
+
+
+
+
+        //------------------------------------------------------------------------------
+        //[HttpPost]
+        //public async Task<ActionResult<List<Record>>> CreateRecord(Record record)
+        //{
+            
+        //    _context.Records.Add(record);
+        //    await _context.SaveChangesAsync();
+        //    var res = await _context.Records.ToListAsync();
+        //    return Ok(res);
+        //}
     }
 }
