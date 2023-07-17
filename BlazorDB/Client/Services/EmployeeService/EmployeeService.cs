@@ -1,4 +1,5 @@
-﻿using BlazorDB.Shared;
+﻿using BlazorDB.Client.Pages;
+using BlazorDB.Shared;
 using Microsoft.AspNetCore.Components;
 using System.Net.Http.Json;
 using static System.Net.WebRequestMethods;
@@ -90,6 +91,26 @@ namespace BlazorDB.Client.Services.EmployeeService
         //    Records = response;
         //    _navigationManager.NavigateTo("record");
         //}
+
+
+
+
+        //---------------------------------------Punch Test---------------------------------------
+        public List<PunchRec> PunchRecs { get; set; } = new List<PunchRec>();
+        public async Task GetPunchRec()
+        {
+            var result = await _http.GetFromJsonAsync<List<PunchRec>>("/api/employ/punchtime");
+            if (result != null)
+                PunchRecs = result;
+        }
+
+        public async Task CreatePunch(PunchRec punch)
+        {
+            var result = await _http.PostAsJsonAsync("api/employ/punchtime", punch);
+            var response = await result.Content.ReadFromJsonAsync<List<PunchRec>>();
+            PunchRecs = response;
+            _navigationManager.NavigateTo("punch");
+        }
     }
 
     

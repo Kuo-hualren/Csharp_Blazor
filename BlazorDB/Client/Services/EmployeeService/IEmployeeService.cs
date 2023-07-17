@@ -15,6 +15,15 @@ namespace BlazorDB.Client.Services.EmployeeService
 
 
 
+        //-----------------------------------------
         //Task CreateRecord(Record record);
+
+
+
+
+        //-----------------Punch------------------
+        List<PunchRec> PunchRecs { get; set; }
+        Task GetPunchRec();
+        Task CreatePunch(PunchRec punch);
     }
 }

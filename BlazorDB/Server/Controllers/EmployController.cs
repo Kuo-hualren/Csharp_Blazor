@@ -1,10 +1,13 @@
 ﻿using BlazorDB.Shared;
+using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Mvc;
 using static System.Net.WebRequestMethods;
 
+
 namespace BlazorDB.Server.Controllers
 {
-    [Route("api/[controller]")]
+
+    [Microsoft.AspNetCore.Mvc.Route("api/[controller]")]
     [ApiController]
     public class EmployController : ControllerBase
     {
@@ -18,10 +21,17 @@ namespace BlazorDB.Server.Controllers
         //    new Employee { Id = 2, Name = "Alan", Phone = "0977777777", Email = "sssss@gmail.com", Position = "engineer", Record = records[1], RecordId = 2}
         //};
 
+        public static List<PunchRec> punchRecs = new List<PunchRec> {
+            new PunchRec { Id = 1, Name = "Ben", Email = "sss@gmail.com", Position = "engineer", Time = "2023/07/17", PunchIn = DateTime.Now, PunchOut = DateTime.Now, Hours = " "}
+            
+        };
+        
+
         private readonly DataContext _context;
         public EmployController(DataContext context)
         {
             _context = context;
+            
         }
 
 
@@ -113,11 +123,34 @@ namespace BlazorDB.Server.Controllers
         //[HttpPost]
         //public async Task<ActionResult<List<Record>>> CreateRecord(Record record)
         //{
-            
+
         //    _context.Records.Add(record);
         //    await _context.SaveChangesAsync();
         //    var res = await _context.Records.ToListAsync();
         //    return Ok(res);
         //}
+
+
+
+        //---------------------------------------Punch Test---------------------------------------
+        [HttpGet("punchtime")]
+        public async Task<ActionResult<List<PunchRec>>> GetPunchRec()
+        {
+            //var records = await _context.Records.ToListAsync();
+            //return Ok(records);
+            return Ok(punchRecs);
+        }
+
+        [HttpPost("punchtime")]
+        public async Task<ActionResult<List<PunchRec>>> CreatePunch(PunchRec punch)
+        {
+            // punchRecs<list> 把 punch(單筆) 加進來 return 回去
+            punchRecs.Add(punch);
+            return Ok(punchRecs);
+
+
+        }
+
+
     }
 }

@@ -1,0 +1,95 @@
+﻿@page "/punch"
+@inject IEmployeeService EmployeeService
+
+
+
+<PageTitle>Update Record</PageTitle>
+<h3>Update Record</h3>
+
+<EditForm Model="punc" OnSubmit="HandleSubmit">
+    <div>
+        <lebal for="Name">姓名</lebal>
+        <InputText id="Name" @bind-Value="punc.Name" class="form-control"></InputText>
+    </div>
+    <div>
+        <lebal for="Date">日期</lebal>
+        <InputText id="Date" @bind-Value="punc.Time" class="form-control"></InputText>
+    </div>
+    
+    <br />
+    <button type="submit" class="btn btn-primary">create</button>
+
+</EditForm>
+<table class="table">
+    <thead>
+        <tr>
+            <th>員工編號</th>
+            <th>姓名</th>
+            <th>日期</th>
+            <th>上班</th>
+            <th>下班</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var emp in EmployeeService.PunchRecs)
+        {
+            <tr>
+                <td>@emp.Id</td>
+                <td>@emp.Name</td>
+                <td>@emp.Time</td>
+                <td>@emp.PunchIn</td>
+                <td>@emp.PunchOut</td>
+                <td>
+                    <button class="btn btn-primary"><i class="oi oi-pencil"></i></button>
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>
+
+
+
+
+
+
+@code {
+
+    [Parameter]
+    public int? Id { get; set; }
+
+
+    PunchRec punc = new PunchRec { };
+
+    protected override async Task OnInitializedAsync()
+    {
+
+        await EmployeeService.GetPunchRec();
+    }
+
+
+
+    async Task HandleSubmit()
+    {
+
+
+
+        if (Id == null)
+        {
+            punc.PunchIn = DateTime.Now;
+            punc.Time = DateTime.Now.ToString("yyyy/MM/dd");
+            await EmployeeService.CreatePunch(punc);          
+            //System.Type type = punc.Name.GetType();
+            string s = DateTime.Now.ToString();
+            Console.WriteLine(s);
+        }
+        
+
+    }
+
+
+
+
+
+
+}

@@ -71,10 +71,12 @@ else
         {
             employee.Record = EmployeeService.Records[0];
             employee.RecordId = employee.Record.Id;
+            Console.WriteLine("null");
         }
         else
         {
             employee = await EmployeeService.GetSingleEmployee((int)Id);
+            Console.WriteLine(Id);
         }
     }
 
@@ -83,10 +85,13 @@ else
         if (Id == null)
         {
             await EmployeeService.CreateEmployee(employee);
+            System.Type type = employee.GetType();
+            Console.WriteLine("null"+type);
         }
         else
         {
             await EmployeeService.UpdateEmployee(employee);
+            Console.WriteLine(Id);
         }
     }
 
