@@ -1,9 +1,9 @@
 BlazorDB資料夾裡面的是測驗用的正式版
 
-
 目前只把資料庫連線與CRUD和生成QR Code完成
 Async() await 語法與資料庫的進階操作還在理解
 
-
-
 test資料夾裡面是測試其他功能用
+
+
+更新: localhost:/punch  打卡紀錄測試成功

@@ -1,12 +1,16 @@
 ﻿@page "/punch"
 @inject IEmployeeService EmployeeService
-
+@inject NavigationManager NavigationManager
 
 
 <PageTitle>Update Record</PageTitle>
-<h3>Update Record</h3>
+<h3>打卡紀錄</h3>
 
 <EditForm Model="punc" OnSubmit="HandleSubmit">
+    <div>
+        <lebal for="Id">員工編號</lebal>
+        <InputNumber id="Id" @bind-Value="punc.Id" class="form-control"></InputNumber>
+    </div>
     <div>
         <lebal for="Name">姓名</lebal>
         <InputText id="Name" @bind-Value="punc.Name" class="form-control"></InputText>
@@ -18,7 +22,26 @@
     
     <br />
     <button type="submit" class="btn btn-primary">create</button>
+    
+</EditForm>
 
+<EditForm Model="punc2" OnSubmit="Update">
+    <div>
+        <lebal for="Id">員工編號</lebal>
+        <InputNumber id="Id" @bind-Value="punc2.Id" class="form-control"></InputNumber>
+    </div>
+    <div>
+        <lebal for="Name">姓名</lebal>
+        <InputText id="Name" @bind-Value="punc2.Name" class="form-control"></InputText>
+    </div>
+    <div>
+        <lebal for="Date">日期</lebal>
+        <InputText id="Date" @bind-Value="punc2.Time" class="form-control"></InputText>
+    </div>
+
+    <br />
+    
+    <button type="submit" class="btn btn-danger">更新</button>
 </EditForm>
 <table class="table">
     <thead>
@@ -28,6 +51,7 @@
             <th>日期</th>
             <th>上班</th>
             <th>下班</th>
+            <th>工時</th>
         </tr>
     </thead>
     <tbody>
@@ -39,8 +63,9 @@
                 <td>@emp.Time</td>
                 <td>@emp.PunchIn</td>
                 <td>@emp.PunchOut</td>
+                <td>@emp.Hours</td>
                 <td>
-                    <button class="btn btn-primary"><i class="oi oi-pencil"></i></button>
+                    <button class="btn btn-primary" @onclick="(() => ShowRecord(emp.Id))"><i class="oi oi-pencil"></i></button>
                 </td>
             </tr>
 
@@ -60,6 +85,7 @@
 
 
     PunchRec punc = new PunchRec { };
+    PunchRec punc2 = new PunchRec { };
 
     protected override async Task OnInitializedAsync()
     {
@@ -72,22 +98,41 @@
     async Task HandleSubmit()
     {
 
-
-
         if (Id == null)
         {
             punc.PunchIn = DateTime.Now;
+            punc.PunchOut = new DateTime(0001, 1, 1, 0, 01, 1);
             punc.Time = DateTime.Now.ToString("yyyy/MM/dd");
             await EmployeeService.CreatePunch(punc);          
             //System.Type type = punc.Name.GetType();
             string s = DateTime.Now.ToString();
             Console.WriteLine(s);
-        }
-        
+        }    
+
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+
 
     }
 
 
+    async Task Update()
+    {
+        
+        punc2.PunchOut = DateTime.Now;       
+        var dif = EmployeeService.DateDiff(punc.PunchIn, punc2.PunchOut);
+        punc2.Hours = dif;
+        
+        await EmployeeService.UpdatePunch(punc2);
+        
+    }
+
+    void ShowRecord(int id)
+    {
+        NavigationManager.NavigateTo($"punch/{id}");
+    }
 
 
 

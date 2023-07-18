@@ -24,6 +24,10 @@ namespace BlazorDB.Client.Services.EmployeeService
         //-----------------Punch------------------
         List<PunchRec> PunchRecs { get; set; }
         Task GetPunchRec();
+        Task<PunchRec> GetSinglePunch(int id);
         Task CreatePunch(PunchRec punch);
+        Task UpdatePunch(PunchRec punch);
+
+        public string DateDiff(DateTime D1, DateTime D2);
     }
 }

@@ -22,7 +22,7 @@ namespace BlazorDB.Server.Controllers
         //};
 
         public static List<PunchRec> punchRecs = new List<PunchRec> {
-            new PunchRec { Id = 1, Name = "Ben", Email = "sss@gmail.com", Position = "engineer", Time = "2023/07/17", PunchIn = DateTime.Now, PunchOut = DateTime.Now, Hours = " "}
+            new PunchRec { Id = 1, Name = "Ben", Email = "sss@gmail.com", Position = "engineer", Time = "2023/07/17", PunchIn = new DateTime(2023,7,12,9,01,12), PunchOut = new DateTime(2023,7,12,18,05,23), Hours = " "}
             
         };
         
@@ -148,9 +148,37 @@ namespace BlazorDB.Server.Controllers
             punchRecs.Add(punch);
             return Ok(punchRecs);
 
-
         }
 
+
+        [HttpGet("punchtime/{id}")]
+        public async Task<ActionResult<PunchRec>> GetSinglePunch(int id)
+        {
+            var p = punchRecs.FirstOrDefault(sh => sh.Id == id);
+            
+            if (p == null)
+            {
+                return NotFound("找不到");
+               
+            }
+            return Ok(p);
+        }
+
+
+        [HttpPut("punchtime/{id}")]
+        public async Task<ActionResult<List<PunchRec>>> UpdatePunch(PunchRec punch, int id)
+        {
+            var update = punchRecs.FirstOrDefault(sh => sh.Id == id);
+            
+            if (update == null)
+                return NotFound("Sorry");
+
+            update.Name = punch.Name;
+            update.PunchOut = punch.PunchOut;
+            update.Hours = punch.Hours;
+
+            return Ok(update);
+        }
 
     }
 }
