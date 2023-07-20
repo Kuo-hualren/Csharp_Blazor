@@ -1,0 +1,12 @@
+D:\Blazor\BlazorDB\EmployRec\EmployRec\Shared\bin\Debug\net6.0\EmployRec.Shared.deps.json
+D:\Blazor\BlazorDB\EmployRec\EmployRec\Shared\bin\Debug\net6.0\EmployRec.Shared.dll
+D:\Blazor\BlazorDB\EmployRec\EmployRec\Shared\bin\Debug\net6.0\EmployRec.Shared.pdb
+D:\Blazor\BlazorDB\EmployRec\EmployRec\Shared\obj\Debug\net6.0\EmployRec.Shared.csproj.AssemblyReference.cache
+D:\Blazor\BlazorDB\EmployRec\EmployRec\Shared\obj\Debug\net6.0\EmployRec.Shared.GeneratedMSBuildEditorConfig.editorconfig
+D:\Blazor\BlazorDB\EmployRec\EmployRec\Shared\obj\Debug\net6.0\EmployRec.Shared.AssemblyInfoInputs.cache
+D:\Blazor\BlazorDB\EmployRec\EmployRec\Shared\obj\Debug\net6.0\EmployRec.Shared.AssemblyInfo.cs
+D:\Blazor\BlazorDB\EmployRec\EmployRec\Shared\obj\Debug\net6.0\EmployRec.Shared.csproj.CoreCompileInputs.cache
+D:\Blazor\BlazorDB\EmployRec\EmployRec\Shared\obj\Debug\net6.0\EmployRec.Shared.dll
+D:\Blazor\BlazorDB\EmployRec\EmployRec\Shared\obj\Debug\net6.0\refint\EmployRec.Shared.dll
+D:\Blazor\BlazorDB\EmployRec\EmployRec\Shared\obj\Debug\net6.0\EmployRec.Shared.pdb
+D:\Blazor\BlazorDB\EmployRec\EmployRec\Shared\obj\Debug\net6.0\ref\EmployRec.Shared.dll

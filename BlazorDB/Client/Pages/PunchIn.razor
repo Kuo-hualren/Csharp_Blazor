@@ -1,10 +1,35 @@
-﻿@page "/punch/{id:int}"
+﻿@page "/punchIn/{id:int}"
 @inject IEmployeeService EmployeeService
 
 <h3>PunchIn</h3>
 
+@foreach (var pun in EmployeeService.PunchRecs)
+{
+    <tr>
+        
+        <td>@pun.Name</td>
+        
+        
+    </tr>
+}
+<EditForm Model="punc" OnSubmit="HandleSubmit">
+    <div>
+        <lebal for="Id">員工編號</lebal>
+        <InputNumber id="Id" @bind-Value="punc.Id" class="form-control">@punc.Id</InputNumber>
+    </div>
+    <div>
+        <lebal for="Name">姓名</lebal>
+        <InputText id="Name" @bind-Value="punc.Name" class="form-control"></InputText>
+    </div>
+    <div>
+        <lebal for="Date">日期</lebal>
+        <InputText id="Date" @bind-Value="punc.Time" class="form-control"></InputText>
+    </div>
 
+    <br />
+    <button type="submit" class="btn btn-primary">create</button>
 
+</EditForm>
 
 
 @code {
@@ -12,6 +37,24 @@
     public int? Id { get; set; }
 
 
+    PunchRec punc = new PunchRec { };
 
+    protected override async Task OnInitializedAsync()
+    {
 
+        await EmployeeService.GetPunchRec();
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        punc.Id =  EmployeeService.PunchRecs.Count+1;
+
+    }
+
+    async Task HandleSubmit()
+    {
+        punc.PunchIn = DateTime.Now;
+        punc.Time = DateTime.Now.ToString("yyyy/MM/dd");
+        await EmployeeService.CreatePunch(punc);
+    }
 }

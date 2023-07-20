@@ -6,7 +6,7 @@
 <PageTitle>Update Record</PageTitle>
 <h3>打卡紀錄</h3>
 
-<EditForm Model="punc" OnSubmit="HandleSubmit">
+@*<EditForm Model="punc" OnSubmit="HandleSubmit">
     <div>
         <lebal for="Id">員工編號</lebal>
         <InputNumber id="Id" @bind-Value="punc.Id" class="form-control"></InputNumber>
@@ -23,7 +23,7 @@
     <br />
     <button type="submit" class="btn btn-primary">create</button>
     
-</EditForm>
+</EditForm>*@
 
 <EditForm Model="punc2" OnSubmit="Update">
     <div>
@@ -72,7 +72,7 @@
         }
     </tbody>
 </table>
-
+<button type="button" class="btn btn-primary" @onclick="(() => ShowRecord(EmployeeService.PunchRecs.Count+1))">打卡上班</button>
 
 
 
@@ -84,7 +84,7 @@
     public int? Id { get; set; }
 
 
-    PunchRec punc = new PunchRec { };
+    //PunchRec punc = new PunchRec { };
     PunchRec punc2 = new PunchRec { };
 
     protected override async Task OnInitializedAsync()
@@ -95,21 +95,21 @@
 
 
 
-    async Task HandleSubmit()
-    {
+    //async Task HandleSubmit()
+    //{
 
-        if (Id == null)
-        {
-            punc.PunchIn = DateTime.Now;
-            punc.PunchOut = new DateTime(0001, 1, 1, 0, 01, 1);
-            punc.Time = DateTime.Now.ToString("yyyy/MM/dd");
-            await EmployeeService.CreatePunch(punc);          
-            //System.Type type = punc.Name.GetType();
-            string s = DateTime.Now.ToString();
-            Console.WriteLine(s);
-        }    
+    //    if (Id == null)
+    //    {
+    //        punc.PunchIn = DateTime.Now;
+    //        punc.PunchOut = new DateTime(0001, 1, 1, 0, 01, 1);
+    //        punc.Time = DateTime.Now.ToString("yyyy/MM/dd");
+    //        await EmployeeService.CreatePunch(punc);          
+    //        //System.Type type = punc.Name.GetType();
+    //        string s = DateTime.Now.ToString();
+    //        Console.WriteLine(s);
+    //    }    
 
-    }
+    //}
 
     protected override async Task OnParametersSetAsync()
     {
@@ -120,9 +120,15 @@
 
     async Task Update()
     {
-        
-        punc2.PunchOut = DateTime.Now;       
-        var dif = EmployeeService.DateDiff(punc.PunchIn, punc2.PunchOut);
+
+        punc2.PunchOut = DateTime.Now;
+
+        // 資料更新抓取 API (測試用)
+        punc2.PunchIn = EmployeeService.PunchRecs[1].PunchIn;
+        punc2.Name = EmployeeService.PunchRecs[1].Name;
+        Console.WriteLine(punc2.PunchIn);
+
+        var dif = EmployeeService.DateDiff(punc2.PunchIn, punc2.PunchOut);
         punc2.Hours = dif;
         
         await EmployeeService.UpdatePunch(punc2);
@@ -131,7 +137,7 @@
 
     void ShowRecord(int id)
     {
-        NavigationManager.NavigateTo($"punch/{id}");
+        NavigationManager.NavigateTo($"punchIn/{id}");
     }
 
 

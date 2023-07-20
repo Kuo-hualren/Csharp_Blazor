@@ -1,0 +1,75 @@
+﻿@page "/punchIn/1/{id:int}"
+@inject IEmployeeService EmployeeService
+@using EmployRec.Shared
+
+<h3>PunchIn</h3>
+@foreach (var pun in EmployeeService.Ps1)
+{
+    <tr>
+
+        <td>@pun.Name</td>
+
+
+    </tr>
+}
+<EditForm Model="punc1" OnSubmit="HandleSubmit">
+    <div>
+        <lebal for="PId">員工編號</lebal>
+        <InputNumber id="PId" @bind-Value="punc1.PunchId" class="form-control">@punc1.PunchId</InputNumber>
+    </div>
+    <div>
+        <lebal for="Name">姓名</lebal>
+        <InputText id="Name" @bind-Value="punc1.Name" class="form-control">@punc1.Name</InputText>
+    </div>
+    <div>
+        <lebal for="Date">日期</lebal>
+        <InputText id="Date" @bind-Value="punc1.Time" class="form-control"></InputText>
+    </div>
+
+    <br />
+    <button type="submit" class="btn btn-primary">打卡上班</button>
+
+</EditForm>
+
+
+@code {
+    [Parameter]
+    public int? Id { get; set; }
+
+
+    Puns1 punc1 = new Puns1 { };
+
+    protected override async Task OnInitializedAsync()
+    {
+
+        await EmployeeService.GetPunch1();
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        punc1.Id = EmployeeService.Ps1.Count + 1;
+        punc1.Name = EmployeeService.Ps1[0].Name;
+        punc1.PunchId = EmployeeService.Ps1[0].PunchId;
+
+    }
+
+    async Task HandleSubmit()
+    {
+
+        punc1.Id = 0;
+        punc1.PunchIn = DateTime.Now;
+        punc1.Time = DateTime.Now.ToString("yyyy/MM/dd");
+        punc1.PunchId = EmployeeService.Ps1[0].PunchId;
+        Console.WriteLine(punc1.Id);
+        Console.WriteLine(punc1.PunchId);
+        Console.WriteLine(punc1.Name);
+        Console.WriteLine(punc1.Time);
+        Console.WriteLine(punc1.PunchIn);
+        Console.WriteLine(punc1.PunchOut);
+        Console.WriteLine(punc1.Hours);
+        Console.WriteLine(punc1);
+        
+        await EmployeeService.CreatePunIn1(punc1);
+        
+    }
+}

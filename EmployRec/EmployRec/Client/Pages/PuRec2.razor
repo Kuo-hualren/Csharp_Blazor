@@ -1,0 +1,68 @@
+﻿@page "/punch2"
+@using EmployRec.Shared
+@inject IEmployeeService EmployeeService
+@inject NavigationManager NavigationManager
+
+
+<h3>@EmployeeService.Ps2[0].Name  打卡紀錄</h3>
+<br />
+<button type="button" class="btn btn-primary" @onclick="(() => PunchI(EmployeeService.Ps2.Count+1))">打卡上班</button>
+<br />
+<br />
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>姓名</th>
+            <th>員工編號</th>
+            <th>日期</th>
+            <th>上班</th>
+            <th>下班</th>
+            <th>工時</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var ps2 in EmployeeService.Ps2)
+        {
+            <tr>
+                <td>@ps2.Name</td>
+                <td>@ps2.PunchId</td>
+                <td>@ps2.Time</td>
+                <td>@ps2.PunchIn</td>
+                <td>@ps2.PunchOut</td>
+                <td>@ps2.Hours</td>
+                <td>
+                    <button class="btn btn-primary" @onclick="(() => PunchO(ps2.Id))"><i class="oi oi-pencil"></i>  打卡下班</button>
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>
+
+
+
+@code {
+
+    [Parameter]
+    public int? Id { get; set; }
+
+    Puns2 punc2 = new Puns2 { };
+
+    protected override async Task OnInitializedAsync()
+    {
+
+        await EmployeeService.GetPunch2();
+    }
+
+    void PunchI(int id)
+    {
+        NavigationManager.NavigateTo($"punchIn/2/{id}");
+    }
+    void PunchO(int id)
+    {
+        NavigationManager.NavigateTo($"punchOut/2/{id}");
+    }
+
+}

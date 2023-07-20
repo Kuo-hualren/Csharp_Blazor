@@ -1,0 +1,68 @@
+﻿@page "/punchOut/2/{id:int}"
+@inject IEmployeeService EmployeeService
+@using EmployRec.Shared
+
+
+<h3>PunchOut</h3>
+<EditForm Model="punc2" OnSubmit="HandleSubmit">
+    <div>
+        <lebal for="PId">員工編號</lebal>
+        <InputNumber id="PId" @bind-Value="punc2.PunchId" class="form-control">@punc2.PunchId</InputNumber>
+    </div>
+    <div>
+        <lebal for="Name">姓名</lebal>
+        <InputText id="Name" @bind-Value="punc2.Name" class="form-control">@punc2.Name</InputText>
+    </div>
+    <div>
+        <lebal for="Date">日期</lebal>
+        <InputText id="Date" @bind-Value="punc2.Time" class="form-control"></InputText>
+    </div>
+
+    <br />
+    <button type="submit" class="btn btn-primary">打卡下班</button>
+
+</EditForm>
+
+
+@code {
+    [Parameter]
+    public int? Id { get; set; }
+
+    Puns2 punc2 = new Puns2 { };
+
+    protected override async Task OnInitializedAsync()
+    {
+        await EmployeeService.GetPunch2();
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+
+        punc2.Name = EmployeeService.Ps2[0].Name;
+        punc2.PunchId = EmployeeService.Ps2[0].PunchId;
+
+    }
+
+    async Task HandleSubmit()
+    {
+
+        foreach (var i in EmployeeService.Ps2)
+        {
+            if (i.Id == Id)
+            {
+                punc2.PunchIn = i.PunchIn;
+                punc2.Time = i.Time;
+            }
+        }
+        punc2.PunchId = EmployeeService.Ps2[0].PunchId;
+        punc2.PunchOut = DateTime.Now;
+        punc2.Id = (int)Id;
+        var dif = EmployeeService.DateDiff(punc2.PunchIn, punc2.PunchOut);
+        punc2.Hours = dif;
+
+        await EmployeeService.UpdatePunch2(punc2);
+
+    }
+
+
+}
