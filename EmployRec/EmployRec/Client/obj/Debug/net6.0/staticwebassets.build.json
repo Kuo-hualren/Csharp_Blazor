@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "j8QCDY/iZuo6bcRKY4u0tkSYibpz319ashFLM5iKz/U=",
+  "Hash": "xAgB/lqIqakjzZBeiHCxuKVWTBncvrIeVPrDMQCmVlk=",
   "Source": "EmployRec.Client",
   "BasePath": "/",
   "Mode": "Root",
@@ -6902,6 +6902,23 @@
       "OriginalItemSpec": "D:\\Blazor\\BlazorDB\\EmployRec\\EmployRec\\Client\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\EmployRec.Client.bundle.scp.css"
     },
     {
+      "Identity": "D:\\Blazor\\BlazorDB\\EmployRec\\EmployRec\\Client\\Pages\\PunchIn1.razor.js",
+      "SourceId": "EmployRec.Client",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Blazor\\BlazorDB\\EmployRec\\EmployRec\\Client\\",
+      "BasePath": "/",
+      "RelativePath": "Pages/PunchIn1.razor.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "Pages\\PunchIn1.razor.js"
+    },
+    {
       "Identity": "D:\\Blazor\\BlazorDB\\EmployRec\\EmployRec\\Client\\wwwroot\\css\\app.css",
       "SourceId": "EmployRec.Client",
       "SourceType": "Discovered",
@@ -7155,6 +7172,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\index.html"
+    },
+    {
+      "Identity": "D:\\Blazor\\BlazorDB\\EmployRec\\EmployRec\\Client\\wwwroot\\ScannerScript\\qrScript.js",
+      "SourceId": "EmployRec.Client",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Blazor\\BlazorDB\\EmployRec\\EmployRec\\Client\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "ScannerScript/qrScript.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\ScannerScript\\qrScript.js"
+    },
+    {
+      "Identity": "D:\\Blazor\\BlazorDB\\EmployRec\\EmployRec\\Client\\wwwroot\\ScannerScript\\scannerFunction.js",
+      "SourceId": "EmployRec.Client",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Blazor\\BlazorDB\\EmployRec\\EmployRec\\Client\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "ScannerScript/scannerFunction.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\ScannerScript\\scannerFunction.js"
     }
   ]
 }

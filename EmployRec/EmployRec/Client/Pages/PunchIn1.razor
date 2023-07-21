@@ -1,18 +1,12 @@
 ﻿@page "/punchIn/1/{id:int}"
 @inject IEmployeeService EmployeeService
+@inject IJSRuntime JSRuntime
 @using EmployRec.Shared
 
+
 <h3>PunchIn</h3>
-@foreach (var pun in EmployeeService.Ps1)
-{
-    <tr>
 
-        <td>@pun.Name</td>
-
-
-    </tr>
-}
-<EditForm Model="punc1" OnSubmit="HandleSubmit">
+@*<EditForm Model="punc1" OnSubmit="HandleSubmit">
     <div>
         <lebal for="PId">員工編號</lebal>
         <InputNumber id="PId" @bind-Value="punc1.PunchId" class="form-control">@punc1.PunchId</InputNumber>
@@ -29,7 +23,37 @@
     <br />
     <button type="submit" class="btn btn-primary">打卡上班</button>
 
-</EditForm>
+</EditForm>*@
+<div style="text-align: center;">
+    <div id="reader" style="width: 500px; margin:auto 0;"></div>
+    <div id="show" style="display: none;">
+        <h1>員工紀錄</h1>        
+        <p style="color: blue;" id="result"></p>
+    </div>
+</div>
+<br />
+@*<div style="height:100px; width:100px; background:red;" @onmousemove="GetInputValue"></div>*@
+<div style="display: @displayStyle">
+    <br />
+    <div>
+        <h2>姓名   @inputValue</h2>
+    </div>
+    <br />
+    <div>
+        <h2>員工編號   @punc1.PunchId</h2>
+    </div>
+    <br />
+    <div>
+        <h2>日期  @punc1.Time</h2>
+    </div>
+
+    <br />
+</div>
+    
+<button class="btn btn-primary" @onclick="GetInputValue">顯示</button>
+<button class="btn btn-primary" @onclick="HandleSubmit">打卡上班</button>
+
+
 
 
 @code {
@@ -41,7 +65,6 @@
 
     protected override async Task OnInitializedAsync()
     {
-
         await EmployeeService.GetPunch1();
     }
 
@@ -50,6 +73,7 @@
         punc1.Id = EmployeeService.Ps1.Count + 1;
         punc1.Name = EmployeeService.Ps1[0].Name;
         punc1.PunchId = EmployeeService.Ps1[0].PunchId;
+        punc1.Time = DateTime.Now.ToString("yyyy/MM/dd");
 
     }
 
@@ -60,6 +84,7 @@
         punc1.PunchIn = DateTime.Now;
         punc1.Time = DateTime.Now.ToString("yyyy/MM/dd");
         punc1.PunchId = EmployeeService.Ps1[0].PunchId;
+        punc1.Name = inputValue;
         Console.WriteLine(punc1.Id);
         Console.WriteLine(punc1.PunchId);
         Console.WriteLine(punc1.Name);
@@ -68,8 +93,38 @@
         Console.WriteLine(punc1.PunchOut);
         Console.WriteLine(punc1.Hours);
         Console.WriteLine(punc1);
-        
+
         await EmployeeService.CreatePunIn1(punc1);
-        
+
     }
+
+
+    private IJSObjectReference? module;
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+            JSRuntime.InvokeVoidAsync("loadQrScript");
+            JSRuntime.InvokeVoidAsync("startQrScanner");
+
+        }
+    }
+
+    private string inputValue { get; set; }
+    private string displayStyle = "none";
+
+    private async Task GetInputValue()
+    {
+        module = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./Pages/PunchIn1.razor.js");
+        // 使用 IJSRuntime 呼叫 JavaScript 函數
+        inputValue = await module.InvokeAsync<string>("GetValue");
+        Console.WriteLine(inputValue);
+        StateHasChanged(); // 更新組件的狀態，以便刷新顯示的值
+        displayStyle = "block";
+
+
+
+    }
+    
+
 }

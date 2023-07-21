@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script> -->
+	
+	<script type="text/javascript" src="instascan.min.js"></script>
+	<script src="./node_modules/html5-qrcode/html5-qrcode.min.js"></script>
+	<title>Document</title>
+	<style>
+		#dd {
+			width: 1800px;
+			height: 1800px;
+		}
+		video {
+			width: 600px;
+	        height: 600px;
+	      }
+	</style>
+</head>
+<body>
+	<h1>666</h1>
+	<div id="reader"></div>
+	<div id="dd">
+		<video id="video-preview" autoplay playsinline></video>
+	</div>
+
+	<div id="qr-reader" style="width:500px"></div>
+    <div id="qr-reader-results"></div>
+	
+    <script type="text/javascript">
+    	const videoElement = document.getElementById('video-preview');
+    	console.log(videoElement);
+		
+		console.log(window);
+
+		const config = {
+			fps: 10, 
+			qrbox: 250, 
+			aspectRatio: 1,
+		    facingMode: { exact: 'environment' } // 使用後置攝影機
+		};
+		
+		
+		// const html5Qrcode = new Html5Qrcode('video-preview');
+
+		// html5Qrcode.start(
+		//   { facingMode: 'environment' }, // 摄像头配置
+		//   { fps: 10, qrbox: 550 }, // 可选的配置
+		//   qrCodeMessage => { // 扫描成功的回调函数
+		//     console.log('扫描成功：', qrCodeMessage);
+		//     // 在这里处理扫描结果
+		//   }
+		// ).catch(error => {
+		//   console.error('取得相机视频时发生错误：', error);
+		// });
+		    
+		   
+		 
+
+
+
+		// navigator.mediaDevices.getUserMedia(cameraConfig)
+		//   .then(stream => {
+		//     // 將相機視訊串流綁定到 <video> 元素
+		//     videoElement.srcObject = stream;
+		//     videoElement.play();
+
+		//     // 使用掃描框架捕獲相機視訊並進行 QR 碼掃描
+		//     const qrCodeScanner = new Html5Qrcode('video-preview', { });
+		    
+		//     qrCodeScanner.start();
+		   
+		//   })
+
+
+        //  let scanner = new Instascan.Scanner({ video: videoElement });
+        //  scanner.addListener('scan', function (content) {
+	    // 	console.log(content);
+	    // });
+	    // Instascan.Camera.getCameras().then(function (cameras) {
+	    //     if (cameras.length > 0) {
+	    //         scanner.start(cameras[0]);
+	    //     } else {
+	    //         console.error('No cameras found.');
+	    //     }
+	    // }).catch(function (e) {
+	    //     console.error(e);
+	    // });
+      	// console.log(scanner.video.attributes.id.nodeValue);
+       
+      
+
+
+        //  const constraints = { audio: true, video: document.querySelector('video') }
+		// navigator.mediaDevices.getUserMedia(constraints)
+		// .then((stream) => {
+		//     // stream 就是咱們的聲音與影像
+		//     console.log(stream);
+		// })
+		// .catch((err) => {
+		//     // 錯誤處理
+		// })
+
+		
+    	function docReady(fn) {
+	        // see if DOM is already available
+	        if (document.readyState === "complete"
+	            || document.readyState === "interactive") {
+	            // call on next available tick
+	            setTimeout(fn, 1);
+	        } else {
+	            document.addEventListener("DOMContentLoaded", fn);
+	        }
+	    }
+
+	    docReady(function () {
+	        var resultContainer = document.getElementById('qr-reader-results');
+	        var lastResult, countResults = 0;
+	        function onScanSuccess(decodedText, decodedResult) {
+	            if (decodedText !== lastResult) {
+	                ++countResults;
+	                lastResult = decodedText;
+	                // Handle on success condition with the decoded message.
+	                console.log(`Scan result ${decodedText}`, decodedResult);
+	            }
+	        }
+
+	        var html5QrcodeScanner = new Html5QrcodeScanner(
+	            "qr-reader", { fps: 10, qrbox: 250 });
+	        html5QrcodeScanner.render(onScanSuccess);
+	    });
+
+    </script>
+</body>
+</html>

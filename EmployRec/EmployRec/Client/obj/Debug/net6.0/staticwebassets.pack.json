@@ -1,6 +1,10 @@
 {
   "Files": [
     {
+      "Id": "D:\\Blazor\\BlazorDB\\EmployRec\\EmployRec\\Client\\Pages\\PunchIn1.razor.js",
+      "PackagePath": "staticwebassets\\Pages\\PunchIn1.razor.js"
+    },
+    {
       "Id": "D:\\Blazor\\BlazorDB\\EmployRec\\EmployRec\\Client\\bin\\Debug\\net6.0\\wwwroot\\_framework\\blazor.webassembly.js",
       "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js"
     },
@@ -11,6 +15,14 @@
     {
       "Id": "D:\\Blazor\\BlazorDB\\EmployRec\\EmployRec\\Client\\obj\\Debug\\net6.0\\scopedcss\\bundle\\EmployRec.Client.styles.css",
       "PackagePath": "staticwebassets\\EmployRec.Client.styles.css"
+    },
+    {
+      "Id": "D:\\Blazor\\BlazorDB\\EmployRec\\EmployRec\\Client\\wwwroot\\ScannerScript\\qrScript.js",
+      "PackagePath": "staticwebassets\\ScannerScript\\qrScript.js"
+    },
+    {
+      "Id": "D:\\Blazor\\BlazorDB\\EmployRec\\EmployRec\\Client\\wwwroot\\ScannerScript\\scannerFunction.js",
+      "PackagePath": "staticwebassets\\ScannerScript\\scannerFunction.js"
     },
     {
       "Id": "D:\\Blazor\\BlazorDB\\EmployRec\\EmployRec\\Client\\wwwroot\\css\\app.css",
