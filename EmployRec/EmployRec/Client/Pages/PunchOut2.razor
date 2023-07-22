@@ -1,27 +1,41 @@
 ﻿@page "/punchOut/2/{id:int}"
 @inject IEmployeeService EmployeeService
+@inject IJSRuntime JSRuntime
 @using EmployRec.Shared
 
 
 <h3>PunchOut</h3>
-<EditForm Model="punc2" OnSubmit="HandleSubmit">
-    <div>
-        <lebal for="PId">員工編號</lebal>
-        <InputNumber id="PId" @bind-Value="punc2.PunchId" class="form-control">@punc2.PunchId</InputNumber>
+
+<div style="text-align: center;">
+    <div id="reader" style="width: 500px; margin:auto 0;"></div>
+    <div id="show" style="display: none;">
+        <h1>打卡下班紀錄</h1>
+        <p style="color: blue; " id="result"></p>
     </div>
+</div>
+<br />
+
+<div style="display: @displayStyle">
+    <br />
     <div>
-        <lebal for="Name">姓名</lebal>
-        <InputText id="Name" @bind-Value="punc2.Name" class="form-control">@punc2.Name</InputText>
+        <h2>姓名   @inputValue</h2>
     </div>
+    <br />
     <div>
-        <lebal for="Date">日期</lebal>
-        <InputText id="Date" @bind-Value="punc2.Time" class="form-control"></InputText>
+        <h2>員工編號   @punc2.PunchId</h2>
+    </div>
+    <br />
+    <div>
+        <h2>日期  @punc2.Time</h2>
     </div>
 
     <br />
-    <button type="submit" class="btn btn-primary">打卡下班</button>
+</div>
 
-</EditForm>
+@*<button class="btn btn-primary" @onclick="GetInputValue">顯示</button>*@
+<button class="btn btn-primary" @onclick="HandleSubmit">打卡下班</button>
+<div style="height:400px; width:1200px; display: @displayShow;" @onmousemove="GetInputValue"></div>
+
 
 
 @code {
@@ -40,6 +54,7 @@
 
         punc2.Name = EmployeeService.Ps2[0].Name;
         punc2.PunchId = EmployeeService.Ps2[0].PunchId;
+        punc2.Time = DateTime.Now.ToString("yyyy/MM/dd");
 
     }
 
@@ -64,5 +79,31 @@
 
     }
 
+    private IJSObjectReference? module;
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+            JSRuntime.InvokeVoidAsync("loadQrScript");
+            JSRuntime.InvokeVoidAsync("startQrScanner");
 
+        }
+    }
+
+
+    private string inputValue { get; set; }
+    private string displayStyle = "none";
+    private string displayShow = "block";
+
+    private async Task GetInputValue()
+    {
+        module = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./Pages/PunchIn2.razor.js");
+        // 使用 IJSRuntime 呼叫 JavaScript 函數
+        inputValue = await module.InvokeAsync<string>("GetValue");
+        Console.WriteLine(inputValue);
+        StateHasChanged(); // 更新組件的狀態，以便刷新顯示的值
+        displayStyle = "block";
+        displayShow = "none";
+
+    }
 }

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "6forynA0KdVQQlz1JVta04SW4L0LAvStun0KdNjVSD8=",
+  "Hash": "Qs7od4kO1z+xZ8nKlvnJ86PGHpT/zHk1MGwLy/QxBqo=",
   "Source": "EmployRec.Server",
   "BasePath": "_content/EmployRec.Server",
   "Mode": "Default",
@@ -6912,6 +6912,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "Pages\\PunchIn1.razor.js"
+    },
+    {
+      "Identity": "D:\\Blazor\\BlazorDB\\EmployRec\\EmployRec\\Client\\Pages\\PunchIn2.razor.js",
+      "SourceId": "EmployRec.Client",
+      "SourceType": "Project",
+      "ContentRoot": "D:\\Blazor\\BlazorDB\\EmployRec\\EmployRec\\Client\\",
+      "BasePath": "/",
+      "RelativePath": "Pages/PunchIn2.razor.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "Pages\\PunchIn2.razor.js"
     },
     {
       "Identity": "D:\\Blazor\\BlazorDB\\EmployRec\\EmployRec\\Client\\wwwroot\\css\\app.css",

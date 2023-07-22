@@ -27,12 +27,12 @@
 <div style="text-align: center;">
     <div id="reader" style="width: 500px; margin:auto 0;"></div>
     <div id="show" style="display: none;">
-        <h1>員工紀錄</h1>        
-        <p style="color: blue;" id="result"></p>
+        <h1>打卡上班紀錄</h1>        
+        <p style="color: blue; " id="result"></p>
     </div>
 </div>
 <br />
-@*<div style="height:100px; width:100px; background:red;" @onmousemove="GetInputValue"></div>*@
+
 <div style="display: @displayStyle">
     <br />
     <div>
@@ -50,13 +50,15 @@
     <br />
 </div>
     
-<button class="btn btn-primary" @onclick="GetInputValue">顯示</button>
+@*<button class="btn btn-primary" @onclick="GetInputValue">顯示</button>*@
 <button class="btn btn-primary" @onclick="HandleSubmit">打卡上班</button>
-
+<div style="height:400px; width:1200px; display: @displayShow;" @onmousemove="GetInputValue"></div>
 
 
 
 @code {
+    
+
     [Parameter]
     public int? Id { get; set; }
 
@@ -74,6 +76,7 @@
         punc1.Name = EmployeeService.Ps1[0].Name;
         punc1.PunchId = EmployeeService.Ps1[0].PunchId;
         punc1.Time = DateTime.Now.ToString("yyyy/MM/dd");
+
 
     }
 
@@ -110,8 +113,11 @@
         }
     }
 
+
+
     private string inputValue { get; set; }
     private string displayStyle = "none";
+    private string displayShow = "block";
 
     private async Task GetInputValue()
     {
@@ -121,10 +127,10 @@
         Console.WriteLine(inputValue);
         StateHasChanged(); // 更新組件的狀態，以便刷新顯示的值
         displayStyle = "block";
-
-
+        displayShow = "none";
 
     }
+    
     
 
 }
