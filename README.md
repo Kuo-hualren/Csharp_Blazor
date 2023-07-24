@@ -23,3 +23,8 @@ EmployRec 資料夾裡的檔案是專題正式版，其他的資料夾都是測�
 
 打卡下班後並計算工時
 ![打卡上下班紀錄2](https://github.com/Kuo-hualren/Csharp_Blazor/assets/84400097/369cce5e-7717-48e3-abd2-1f0ec55c0c1d)
+
+SQL Server 資料庫
+![員工資料庫](https://github.com/Kuo-hualren/Csharp_Blazor/assets/84400097/f66378a9-7300-47c0-b3b5-7be083101dda)
+![資料庫打卡紀錄](https://github.com/Kuo-hualren/Csharp_Blazor/assets/84400097/aa88e2b5-b34f-4867-a1f3-fbc54b96a4b6)
+
