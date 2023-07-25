@@ -11,8 +11,9 @@ EmployRec 資料夾裡的檔案是專題正式版，其他的資料夾都是測�
 
 ![員工資料表](https://github.com/Kuo-hualren/Csharp_Blazor/assets/84400097/ab04dbea-09ee-420b-803d-b331eb0d09f7)
 
-![打卡1](https://github.com/Kuo-hualren/Csharp_Blazor/assets/84400097/ed85f53b-cc54-430a-861b-a0a90cb7f89b)
-![打卡上下班紀錄3](https://github.com/Kuo-hualren/Csharp_Blazor/assets/84400097/25f73ac2-0a99-4f4f-9715-327099c1aff7)
+![打卡1](https://github.com/Kuo-hualren/Csharp_Blazor/assets/84400097/d6a91ab4-aa05-4c7b-81dc-d4ba1282a26a)
+
+![打卡4](https://github.com/Kuo-hualren/Csharp_Blazor/assets/84400097/85e335fd-1cf3-436a-bfef-c2ab21dba04e)
 
 (上班)打卡
 ![打卡2](https://github.com/Kuo-hualren/Csharp_Blazor/assets/84400097/b63f2969-aa6d-4a27-adff-71c0e9bccc6f)
