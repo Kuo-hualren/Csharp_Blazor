@@ -197,14 +197,14 @@
       "netstandard.dll": "sha256-8Ej3VOdrj8ijDcTS0\/1AEMpisaFDe3Nmj0Fbq5sfZEk=",
       "System.Private.CoreLib.dll": "sha256-tqFypIfntE2p16olQ2cI4rklqWNJqsPJvAoPSChg0H0=",
       "EmployRec.Shared.dll": "sha256-hlbUyGYgKs0iw4YKpkab+C1hLsDPIGAs0R1tImojZLc=",
-      "EmployRec.Client.dll": "sha256-8MR4o28l22ZL\/Y37\/K7p3kxcnLufxCw7Fk7blnFvE9E="
+      "EmployRec.Client.dll": "sha256-WumCu0Zv5zI+G29axpWD\/IeGjPw\/kSaCrwrOjYvMNrk="
     },
     "extensions": null,
     "lazyAssembly": null,
     "libraryInitializers": null,
     "pdb": {
       "EmployRec.Shared.pdb": "sha256-f+VKscHH0bxWnbEZQ35iqIirPbSls9VnQuXf9YvuJ58=",
-      "EmployRec.Client.pdb": "sha256-DlX6vibpOgQCL9SUEcGgAKbFRCj0h7+Yzhu+3yM2KIQ="
+      "EmployRec.Client.pdb": "sha256-TdALxrdCUAk2VGYHNhIMM3y\/iNyfGxuzILv24eEzAVo="
     },
     "runtime": {
       "dotnet.6.0.18.s2k692ncnw.js": "sha256-Iww31ANFa3KZuR4RkhiSYt3FJ7PKpMdeFNq3l3Td1h8=",

@@ -77,6 +77,14 @@
       "PackagePath": "staticwebassets\\css\\open-iconic\\font\\fonts\\open-iconic.woff"
     },
     {
+      "Id": "D:\\Blazor\\BlazorDB\\EmployRec\\EmployRec\\Client\\wwwroot\\css\\style.css",
+      "PackagePath": "staticwebassets\\css\\style.css"
+    },
+    {
+      "Id": "D:\\Blazor\\BlazorDB\\EmployRec\\EmployRec\\Client\\wwwroot\\css\\style.scss",
+      "PackagePath": "staticwebassets\\css\\style.scss"
+    },
+    {
       "Id": "D:\\Blazor\\BlazorDB\\EmployRec\\EmployRec\\Client\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },

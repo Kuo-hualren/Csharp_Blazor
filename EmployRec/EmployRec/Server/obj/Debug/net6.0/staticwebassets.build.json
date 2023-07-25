@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Qs7od4kO1z+xZ8nKlvnJ86PGHpT/zHk1MGwLy/QxBqo=",
+  "Hash": "4h7mTCxxqxUF/YnVxTrp2U7CMs3gD25h1d/61aQDLcA=",
   "Source": "EmployRec.Server",
   "BasePath": "_content/EmployRec.Server",
   "Mode": "Default",
@@ -7133,6 +7133,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\README.md"
+    },
+    {
+      "Identity": "D:\\Blazor\\BlazorDB\\EmployRec\\EmployRec\\Client\\wwwroot\\css\\style.css",
+      "SourceId": "EmployRec.Client",
+      "SourceType": "Project",
+      "ContentRoot": "D:\\Blazor\\BlazorDB\\EmployRec\\EmployRec\\Client\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "css/style.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\style.css"
+    },
+    {
+      "Identity": "D:\\Blazor\\BlazorDB\\EmployRec\\EmployRec\\Client\\wwwroot\\css\\style.scss",
+      "SourceId": "EmployRec.Client",
+      "SourceType": "Project",
+      "ContentRoot": "D:\\Blazor\\BlazorDB\\EmployRec\\EmployRec\\Client\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "css/style.scss",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\style.scss"
     },
     {
       "Identity": "D:\\Blazor\\BlazorDB\\EmployRec\\EmployRec\\Client\\wwwroot\\favicon.ico",

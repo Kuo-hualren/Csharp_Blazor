@@ -1,0 +1,74 @@
+﻿@page "/test"
+@inject IEmployeeService EmployeeService
+@using EmployRec.Shared;
+
+<h3>Test</h3>
+
+<body>
+	<section class="main-content">
+		<div class="container">
+			<table class="table">
+				<thead>
+					<tr>
+						<th style="padding-left:60px;">姓名</th>
+						<th>手機號碼</th>
+						<th>信箱</th>
+						<th>職位</th>
+						<th>員工ID</th>
+						<th>  </th>
+					</tr>
+				</thead>
+				@foreach (var emp in EmployeeService.Emps) 
+				{
+					<tbody>
+						<tr>
+							<td>
+								<div class="user-info">
+									<div class="user-info__img">
+										<i class="fa-solid fa-id-card-clip fa-xl" style="color: #b01c32;"></i>
+									</div>
+									<div class="user-info__basic" style="margin-left:20px;">
+										<h5 class="mb-0">
+											@emp.Name
+										</h5>
+									
+									</div>
+								</div>
+							</td>
+							<td>
+								<div class="dropdown open">
+									@emp.Phone
+								</div>
+							</td>
+							<td>
+								<h6 class="mb-0">@emp.Email</h6>
+							</td>
+							<td>
+								<h6 class="mb-0">@emp.Position</h6>
+							</td>
+							<td>
+								<h6 class="mb-0">@emp.PunchId</h6>
+							</td>
+						
+							<td>
+								<span class="btn btn-success"><i class="oi oi-pencil">  打卡紀錄</i></span>
+							</td>
+						</tr>
+					</tbody>
+				}
+			</table>
+		</div>
+	</section>
+	
+</body>
+
+
+@code {
+	Emplo emplo = new Emplo { };
+
+	protected override async Task OnInitializedAsync()
+	{
+		await EmployeeService.GetEmployees();
+		emplo = EmployeeService.Emps.FirstOrDefault(e => e.Id == 1);
+	}
+}

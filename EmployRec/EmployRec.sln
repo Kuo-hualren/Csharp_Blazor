@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33815.320
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployRec.Server", "EmployRec\Server\EmployRec.Server.csproj", "{EC495329-16DE-495A-9092-12A7A42FE920}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployRec.Server", "EmployRec\Server\EmployRec.Server.csproj", "{EC495329-16DE-495A-9092-12A7A42FE920}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployRec.Client", "EmployRec\Client\EmployRec.Client.csproj", "{C362B5B7-0B5C-44F6-BF73-32FFF41AA731}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployRec.Client", "EmployRec\Client\EmployRec.Client.csproj", "{C362B5B7-0B5C-44F6-BF73-32FFF41AA731}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployRec.Shared", "EmployRec\Shared\EmployRec.Shared.csproj", "{C9597C71-EB4B-4060-B343-B5151D38F124}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployRec.Shared", "EmployRec\Shared\EmployRec.Shared.csproj", "{C9597C71-EB4B-4060-B343-B5151D38F124}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
